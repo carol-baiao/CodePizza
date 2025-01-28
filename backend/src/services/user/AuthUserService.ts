@@ -2,6 +2,7 @@
 
 import prismaClient from "../../prisma";
 import { compare } from "bcryptjs";
+import { sign } from "jsonwebtoken"; // metodo pra registrar um token
 
 interface AuthRequest {
     email: string;
@@ -21,14 +22,32 @@ class AuthUserService {
             throw new Error('Usuário ou senha incorretos.')
         }
 
-        // verificando senha
+        // verificando senha que usuario forneceu com senha criptografada
         const passwordMatch = await compare(password, user.password)
 
         if(!passwordMatch) {
             throw new Error('Usuário ou senha incorretos.')
         }
 
-        return { ok: true }
+        // gerando token pro usuario 
+        const token = sign(
+            {
+                name: user.name,
+                email: user.email
+            },
+            process.env.JWT_SECRET as string, // colocando 'as string' para não dar erro de tipagem
+            {
+                subject: user.id,
+                expiresIn: '30d' // token expira em 30 dias, obrigando o usuario a fazer novo login
+            }
+        )
+
+        return { 
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            token: token
+         }
     }
 }
 
