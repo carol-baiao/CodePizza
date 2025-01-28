@@ -1,3 +1,5 @@
+// criação de usuarios
+
 import prismaClient from "../../prisma";
 import { hash } from "bcryptjs";
 
