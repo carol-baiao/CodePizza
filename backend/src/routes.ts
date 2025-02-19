@@ -7,6 +7,7 @@ import { DetailUserController } from './controllers/user/DetailUserController';
 
 //controllers - category
 import { CreateCategoryController } from './controllers/category/CreateCategoryController';
+import { ListCategoryController } from './controllers/category/ListCategoryController';
 
 // middlewares
 import { isAuthenticated } from './middlewares/isAuthenticated';
@@ -21,5 +22,6 @@ router.get('/userinfo', isAuthenticated, new DetailUserController().handle);
 
 // Rotas - categories
 router.post('/category', isAuthenticated, new CreateCategoryController().handle);
+router.get('/category', isAuthenticated, new ListCategoryController().handle);
 
 export { router };
