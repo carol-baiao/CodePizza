@@ -144,3 +144,7 @@ npm run dev  # ou yarn dev -->
 Este projeto é open-source e está sob a [MIT License](LICENSE).
 
 ---
+
+## 📢 Créditos  
+Este projeto foi originalmente desenvolvido por [Matheus Fraga](https://github.com/devfraga).  
+Estou acompanhando o desenvolvimento e reproduzindo o projeto para fins de aprendizado.
