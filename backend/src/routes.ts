@@ -12,6 +12,7 @@ import { ListCategoryController } from './controllers/category/ListCategoryContr
 
 // controllers - products
 import { CreateProductController } from './controllers/product/CreateProductController';
+import { ListByCategoryController } from './controllers/product/ListByCategoryController';
 
 // middlewares
 import { isAuthenticated } from './middlewares/isAuthenticated';
@@ -32,5 +33,6 @@ router.get('/category', isAuthenticated, new ListCategoryController().handle);
 
 // Rotas - product
 router.post('/product', isAuthenticated, upload.single('file'), new CreateProductController().handle);
+router.get('/category/products', isAuthenticated, new ListByCategoryController().handle);
 
 export { router };
