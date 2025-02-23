@@ -1,6 +1,6 @@
 # 🍕 CodePizza
 
-CodePizza é um sistema completo para gerenciamento de pedidos em pizzarias. O sistema permite que os garçons registrem pedidos, que são automaticamente exibidos na cozinha. O backend e frontend estão sendo desenvolvidos do zero, utilizando tecnologias modernas para garantir uma solução eficiente e escalável.
+CodePizza é um sistema completo para gerenciamento de pedidos em pizzarias. O sistema permite que os garçons registrem pedidos, que são automaticamente exibidos na cozinha. O backend e frontend estão sendo desenvolvidos do zero, para fins de aprendizagem.
 
 ## 🚀 Tecnologias Utilizadas
 
