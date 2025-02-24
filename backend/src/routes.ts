@@ -19,7 +19,7 @@ import { CreateOrderController } from './controllers/order/CreateOrderController
 import { RemoveOrderController } from './controllers/order/RemoveOrderController';
 
 // controllers - item
-import { AddItemController } from './controllers/order/AddItemController';
+import { AddItemController } from './controllers/item/AddItemController';
 
 // middlewares
 import { isAuthenticated } from './middlewares/isAuthenticated';
