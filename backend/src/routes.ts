@@ -10,13 +10,16 @@ import { DetailUserController } from './controllers/user/DetailUserController';
 import { CreateCategoryController } from './controllers/category/CreateCategoryController';
 import { ListCategoryController } from './controllers/category/ListCategoryController';
 
-// controllers - products
+// controllers - product
 import { CreateProductController } from './controllers/product/CreateProductController';
 import { ListByCategoryController } from './controllers/product/ListByCategoryController';
 
 // controllers - order
 import { CreateOrderController } from './controllers/order/CreateOrderController';
 import { RemoveOrderController } from './controllers/order/RemoveOrderController';
+
+// controllers - item
+import { AddItemController } from './controllers/order/AddItemController';
 
 // middlewares
 import { isAuthenticated } from './middlewares/isAuthenticated';
@@ -42,6 +45,9 @@ router.get('/category/products', isAuthenticated, new ListByCategoryController()
 // Rotas - Order
 router.post('/order', isAuthenticated, new CreateOrderController().handle);
 router.delete('/order', isAuthenticated, new RemoveOrderController().handle);
+
+// Rotas - Item
+router.post('/order/item', isAuthenticated, new AddItemController().handle);
 
 
 export { router };
