@@ -18,6 +18,7 @@ import { ListByCategoryController } from './controllers/product/ListByCategoryCo
 import { CreateOrderController } from './controllers/order/CreateOrderController';
 import { RemoveOrderController } from './controllers/order/RemoveOrderController';
 import { SendOrderController } from './controllers/order/SendOrderController';
+import { ListSentOrdersController } from './controllers/order/ListSentOrdersController';
 
 // controllers - item
 import { AddItemController } from './controllers/item/AddItemController';
@@ -48,6 +49,7 @@ router.get('/category/products', isAuthenticated, new ListByCategoryController()
 router.post('/order', isAuthenticated, new CreateOrderController().handle);
 router.delete('/order', isAuthenticated, new RemoveOrderController().handle);
 router.put('/order/send', isAuthenticated, new SendOrderController().handle);
+router.get('/orders', isAuthenticated, new ListSentOrdersController().handle);
 
 // Rotas - Item
 router.post('/order/item', isAuthenticated, new AddItemController().handle);
