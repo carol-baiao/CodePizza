@@ -1,8 +1,0 @@
-backend/node_modules/
-
-backend/dist/
-backend/build/
-
-backend/prisma/migrations/
-
-backend/tmp
