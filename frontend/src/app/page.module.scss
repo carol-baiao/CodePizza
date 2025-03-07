@@ -1,3 +1,76 @@
-.teste {
-  color: red;
+.logo {
+    width: 50%;
+}
+
+.containerCenter {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login {
+    width: 100%;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    
+    form {
+        color: var(--white);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        width: 100%;
+        font-size: 18px;
+    }
+
+    form button {
+        height: 40px;
+        width: 40%;
+        background-color: var(--red-900);
+        border: 0;
+        border-radius: 8px;
+        color: var(--white);
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.5s ease;
+
+        &:hover {
+            background-color:  #fc1a29;
+            transform: scale(1.02);
+        }
+    }
+}
+
+.input {
+    height: 40px;
+    width: 40%;
+    padding: 16px;
+    border: 1px solid var(--gray-100);
+    border-radius: 8px;
+    background-color: var(--dark-900);
+    color: var(--white);
+    font-size: 16px;
+
+    &:focus {
+        border-color: var(--white);
+        box-shadow: 0px 1px 2px var(--gray-100);
+    }
+}
+
+.input::placeholder {
+    color: rgba(255, 255, 255, 0.671)
+}
+
+.text {
+    color: var(--white);
+    text-decoration: none;
 }
