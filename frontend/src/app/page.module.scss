@@ -18,6 +18,10 @@
     align-items: center;
     justify-content: center;
     gap: 24px;
+
+    h1 {
+        color: var(--white);
+    }
     
     form {
         color: var(--white);
@@ -37,6 +41,7 @@
         border: 0;
         border-radius: 8px;
         color: var(--white);
+        font-size: 16px;
         font-weight: bold;
         display: flex;
         align-items: center;
