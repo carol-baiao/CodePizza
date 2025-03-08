@@ -29,5 +29,6 @@ export function isAuthenticated(req: Request, res: Response, next: NextFunction)
         return next();
     } catch (err) {
         console.error("Erro ao validar token:", err);
+        return res.status(401).json({ error: "Token inválido" });
     }
 }
