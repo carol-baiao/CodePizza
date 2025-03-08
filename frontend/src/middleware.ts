@@ -10,7 +10,6 @@ export async function middleware(req: NextRequest) {
     }
     
     const token = await getCookieServer();
-    console.log(token);
 
     if(!token) {
         return NextResponse.redirect(new URL("/", req.url));
@@ -26,7 +25,6 @@ export async function middleware(req: NextRequest) {
 }
 
 async function validateToken(token: string) {
-    console.log(token);
     if(!token) return false;
 
     try {
