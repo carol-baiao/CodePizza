@@ -6,9 +6,20 @@ import Image from 'next/image'
 import logoImg from '/public/logo.svg'
 import { LogOutIcon, MenuIcon, XIcon } from 'lucide-react'
 import { useState } from 'react'
+import { deleteCookie } from 'cookies-next'
+import { useRouter } from 'next/navigation'
 
 export function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
+
+    const router = useRouter();
+
+    async function handleLogout() {
+        deleteCookie("session", { path: "/" });
+
+        router.replace("/"); // substitui a rota atual por essa nova rota
+    }
+
     return(
         <header className={styles.headerContainer}>
             <div className={styles.headerContent}>
@@ -31,7 +42,7 @@ export function Header() {
                     <Link href="/dashboard/category">Categoria</Link>
                     <Link href="/dashboard/menu">Cardápio</Link>
 
-                    <form>
+                    <form action={handleLogout}>
                         <button type='submit'>
                             <LogOutIcon size={24} color='#FFF'/>
                         </button>
