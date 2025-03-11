@@ -26,9 +26,9 @@ export function isAuthenticated(req: Request, res: Response, next: NextFunction)
         // recuperar o id do token e colocar dentro da variavel "user_id", dentro do request
         req.user_id = sub;
 
-        return next();
+        next();
     } catch (err) {
         console.error("Erro ao validar token:", err);
-        return res.status(401).json({ error: "Token inválido" });
+        res.status(401).json({ error: "Token inválido" });
     }
 }
