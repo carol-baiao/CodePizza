@@ -28,8 +28,6 @@ export default function Home() {
         return;
       }
 
-      console.log(response.data);
-
       const expressTime = 60 * 60 * 24 * 30 * 1000; // passando 30 dias pra expirar cookie
       const cookieStore = await cookies();
 
