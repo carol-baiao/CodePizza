@@ -1,0 +1,27 @@
+.container {
+    padding: 24px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    h1 {
+        color: var(--white);
+    }
+}
+
+.form {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+}
+
+.input {
+    height: 40px;
+    border: 0;
+    background-color: var(--dark-900);
+    border-radius: 8px;
+    padding: 0 16px;
+    color: var(--white);
+    border: 1px solid var(--gray-100);
+}
