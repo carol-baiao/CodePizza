@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 import { RefreshCw } from 'lucide-react';
 import { OrderProps } from '@/lib/order.type';
 import { useRouter } from 'next/navigation';
-import { toast } from'react-hot-toast';
+import { toast } from 'react-hot-toast';
 
 interface Props {
     orders: OrderProps[];
