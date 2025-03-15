@@ -44,6 +44,7 @@
             flex-direction: column;
             background: var(--dark-900);
             position: absolute;
+            z-index: 100;
             top: 4rem;
             right: 0;
             width: 200px;
