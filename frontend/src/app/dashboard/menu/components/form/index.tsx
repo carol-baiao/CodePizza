@@ -5,6 +5,7 @@ import styles from './styles.module.scss';
 import { UploadCloud } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import Image from 'next/image';
+import { Button } from '@/app/dashboard/components/button';
 
 export function Form() {
     const [image, setImage] = useState<File>();
@@ -53,6 +54,35 @@ export function Form() {
                         />
                     )}
                 </label>
+
+                <select name="category">
+
+                </select>
+
+                <input 
+                    type="text" 
+                    name="name" 
+                    placeholder='Digite o nome do produto'
+                    required
+                    className={styles.input}
+                />
+
+                <input 
+                    type="text" 
+                    name="price" 
+                    placeholder='Digite o preço do produto'
+                    required
+                    className={styles.input}
+                />
+
+                <textarea 
+                    name="description" 
+                    placeholder='Digite a descrição do produto'
+                    required
+                    className={styles.input}
+                ></textarea>
+
+                <Button name='Cadastrar produto'/>
             </form>
         </main>
     )
