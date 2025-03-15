@@ -7,9 +7,22 @@ import { toast } from 'react-hot-toast';
 import Image from 'next/image';
 import { Button } from '@/app/dashboard/components/button';
 
-export function Form() {
+interface CategoryProps {
+    id: string;
+    name: string;
+}
+
+interface Props {
+    categories: CategoryProps[]
+}
+
+export function Form({ categories }: Props) {
     const [image, setImage] = useState<File>();
     const [previewImage, setPreviewImage] = useState("");
+
+    function handleRegisterProduct(formData: FormData) {
+        
+    }
 
     function handleFile(event: ChangeEvent<HTMLInputElement>) {
         if(event.target.files && event.target.files[0]) {
@@ -29,7 +42,7 @@ export function Form() {
         <main className={styles.container}>
             <h1>Novo produto</h1>
 
-            <form className={styles.form} action="">
+            <form className={styles.form} action={handleRegisterProduct}>
                 <label className={styles.labelImage}>
                     <span>
                         <UploadCloud size={30} color='#FFF'/>
@@ -56,7 +69,11 @@ export function Form() {
                 </label>
 
                 <select name="category">
-
+                    {categories.map( (category, index) => (
+                        <option key={category.id} value={index}>
+                            {category.name}
+                        </option>
+                    ))}
                 </select>
 
                 <input 
