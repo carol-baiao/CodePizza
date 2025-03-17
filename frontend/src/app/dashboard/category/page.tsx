@@ -5,9 +5,9 @@ import CategoryForm from './components/form';
 export default function Category() {
     async function handleRegisterCategory(formData: FormData): Promise<boolean> {
         "use server"
-        const name = formData.get('name') as string;
+        const name = formData.get('name')?.toString().trim();
 
-        if(name.trim() === "") return false;
+        if(name === "") return false;
 
         const data = {
             name: name,
