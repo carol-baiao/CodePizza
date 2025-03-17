@@ -8,6 +8,7 @@ import { LogOutIcon, MenuIcon, XIcon } from 'lucide-react'
 import { useState } from 'react'
 import { deleteCookie } from 'cookies-next'
 import { useRouter } from 'next/navigation'
+import { toast } from 'react-hot-toast'
 
 export function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -16,6 +17,8 @@ export function Header() {
 
     async function handleLogout() {
         deleteCookie("session", { path: "/" });
+
+        toast.success('Sessão encerrada');
 
         router.replace("/"); // substitui a rota atual por essa nova rota
     }
