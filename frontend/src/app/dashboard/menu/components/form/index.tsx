@@ -12,16 +12,37 @@ interface CategoryProps {
     name: string;
 }
 
-interface Props {
-    categories: CategoryProps[]
+interface handleRegisterProps {
+    image: File,
+    category_id: string;
+    formData: FormData;
 }
 
-export function Form({ categories }: Props) {
+interface Props {
+    categories: CategoryProps[];
+    handleRegisterProduct: ({ image, category_id, formData }: handleRegisterProps) => Promise<boolean>;
+}
+
+export function Form({ categories, handleRegisterProduct }: Props) {
     const [image, setImage] = useState<File>();
     const [previewImage, setPreviewImage] = useState("");
 
-    function handleRegisterProduct(formData: FormData) {
-        
+    async function handleRegister(formData: FormData) {
+        if(!image) {
+            toast.error("Imagem do produto é obrigatória!");
+            return;
+        }
+
+        const categoryIndex = formData.get("category");
+
+        const category_id = categories[Number(categoryIndex)].id;
+
+        const success = await handleRegisterProduct({ image, category_id, formData });
+
+        if(success) toast.success("Produto cadastrado com sucesso!");
+        else toast.error("Falha ao cadastrar o produto.");
+
+        setPreviewImage("");
     }
 
     function handleFile(event: ChangeEvent<HTMLInputElement>) {
@@ -42,7 +63,7 @@ export function Form({ categories }: Props) {
         <main className={styles.container}>
             <h1>Novo produto</h1>
 
-            <form className={styles.form} action={handleRegisterProduct}>
+            <form className={styles.form} action={handleRegister}>
                 <label className={styles.labelImage}>
                     <span>
                         <UploadCloud size={30} color='#FFF'/>
@@ -50,9 +71,8 @@ export function Form({ categories }: Props) {
 
                     <input 
                         type="file" 
-                        name="" 
+                        name='file'
                         accept='image/png, image/jpeg'
-                        required 
                         onChange={handleFile}
                     />
 
