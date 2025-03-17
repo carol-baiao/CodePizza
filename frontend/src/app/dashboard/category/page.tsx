@@ -1,15 +1,13 @@
-import styles from './styles.module.scss'
-import { Button } from '@/app/dashboard/components/button'
 import { api } from '@/services/api';
 import { getCookieServer } from '@/lib/cookieServer';
-import { redirect } from 'next/navigation';
+import CategoryForm from './components/form';
 
 export default function Category() {
-    async function handleRegisterCategory(formData: FormData) {
+    async function handleRegisterCategory(formData: FormData): Promise<boolean> {
         "use server"
         const name = formData.get('name') as string;
 
-        if(name.trim() === "") return; 
+        if(name.trim() === "") return false;
 
         const data = {
             name: name,
@@ -24,27 +22,13 @@ export default function Category() {
         })
         .catch((err) => {
             console.log(err);
-            return;
+            return false;
         })
 
-        redirect("/dashboard");
+        return true;
     }
 
     return(
-        <main className={styles.container}>
-            <h1>Nova categoria</h1>
-
-            <form className={styles.form} action={handleRegisterCategory}>
-                <input 
-                    type="text" 
-                    name="name" 
-                    placeholder="nome da categoria"
-                    required
-                    className={styles.input} 
-                />
-
-                <Button name='Cadastrar'/>
-            </form>
-        </main>
+        <CategoryForm handleRegisterCategory={handleRegisterCategory}/>
     )
 }
