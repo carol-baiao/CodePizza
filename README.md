@@ -53,23 +53,30 @@ backend/
 
 ### 📂 Estrutura do Frontend
 
-Ainda em desenvolvimento.
-<!--O frontend será desenvolvido utilizando Next.js para web e React Native para dispositivos móveis. A estrutura planejada será a seguinte:
+- O frontend foi desenvolvido utilizando Next.js para web e será em React Native para dispositivos móveis. A estrutura planejada será a seguinte:
 
 ```
 frontend/
 ├── src/
-│   ├── components/
-│   ├── pages/
+│   ├── app/
+│   │   ├── dashboard/
+│   │   │   ├── category/
+│   │   │   ├── components/
+│   │   │   ├── menu/
+│   │   ├── signup/
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   ├── lib/
+│   ├── providers/
 │   ├── services/
 │   ├── styles/
-│   ├── utils/
-│   ├── App.tsx (No React Native)
-│
-├── public/ (Assets estáticos)
+├── public/
+├── .gitignore
+├── next.config.js
 ├── package.json
 ├── tsconfig.json
-``` -->
+```
+
 
 
 ## 🛠 Como Rodar o Projeto Localmente
@@ -107,16 +114,16 @@ npm run dev  # ou yarn dev
 O servidor iniciará em http://localhost:3333
 
 ### ⚙ 5. Configurar as Dependências do Frontend
-(Ainda em desenvolvimento)
-<!--bash
+```bash
 cd frontend
-npm install  # ou yarn install -->
+npm install  # ou yarn install
+```
 
 
 ### ▶ 6. Rodar o Frontend
-(Ainda em desenvolvimento)
-<!--bash
-npm run dev  # ou yarn dev -->
+```bash
+npm run dev  # ou yarn dev
+```
 
 
 ## 🔗 Principais Rotas da API
