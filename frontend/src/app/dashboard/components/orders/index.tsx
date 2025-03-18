@@ -22,6 +22,10 @@ export function Orders({ orders }: Props) {
         toast.success('Pedidos atualizados com sucesso!');
     }
 
+    async function handleDetailOrder(order_id: string) {
+        await onRequestOpen(order_id);
+    }
+
     return(
         <>
             <main className={styles.container}>
@@ -39,7 +43,7 @@ export function Orders({ orders }: Props) {
                     )}
 
                     {orders.map( order => (
-                        <button key={order.id} className={styles.orderItem}>
+                        <button key={order.id} className={styles.orderItem} onClick={() => handleDetailOrder(order.id)}>
                             <div className={styles.tag}></div>
                             <span>Mesa {order.table}</span>
                         </button>

@@ -43,6 +43,10 @@
     text-align: right;
 }
 
+.table {
+    color: var(--green-900);
+}
+
 .listItems {
     padding: 16px;
 }
@@ -64,7 +68,6 @@
     justify-content: center;
 
     button {
-        width: 25%;
         background-color: var(--green-900);
         padding: 8px;
         border-radius: 4px;

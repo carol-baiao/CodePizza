@@ -1,11 +1,17 @@
+"use client"
+
+import { use } from 'react';
 import styles from './styles.module.scss';
 import { X } from 'lucide-react';
+import { OrderContext } from '@/providers/order';
 
 export function OrderModal() {
+    const { onRequestClose, order } = use(OrderContext);
+
     return (
         <dialog className={styles.dialogContainer}>
             <section className={styles.dialogContent}>
-                <button className={styles.dialogBack}>
+                <button className={styles.dialogBack} onClick={onRequestClose}>
                     <X size={40} color='#FF3F4b' />
                 </button>
 
@@ -14,25 +20,21 @@ export function OrderModal() {
                         <h2>Detalhes do pedido</h2>
 
                         <span className={styles.table}>
-                            Mesa
+                            Mesa <b>{order.table}</b> {order.name && (` - ${order.name}`)}
                         </span>
                     </div>
 
                     <div className={styles.listItems}>
-                        <section className={styles.item}>
-                            <span>item tal</span>
-                            <span className={styles.description}>descrição tal</span>
-                        </section>
-
-                        <section className={styles.item}>
-                            <span>item tal</span>
-                            <span className={styles.description}>descrição tal</span>
-                        </section>
-
-                        <section className={styles.item}>
-                            <span>item tal</span>
-                            <span className={styles.description}>descrição tal</span>
-                        </section>
+                        <ul>
+                            {order.items.map(item => (
+                                <li key={item.id}>
+                                    <section className={styles.item}>
+                                        <span>{item.product.name} - <b>{item.amount}</b></span>
+                                        <span className={styles.description}>{item.product.description}</span>
+                                    </section>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
 
                     <div className={styles.containerButton}>

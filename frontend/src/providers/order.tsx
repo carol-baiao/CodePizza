@@ -1,11 +1,15 @@
 "use client"
 
-import { createContext, ReactNode, useState } from "react"
+import { createContext, ReactNode, useState } from "react";
+import { OrderDetail } from "./OrderDetail.types";
+import { api } from "@/services/api";
+import { getCookieClient } from "@/lib/cookieClient";
 
 type OrderContextData = {
     isOpen: boolean;
-    onRequestOpen: () => void;
+    onRequestOpen: (order_id: string) => Promise<void>;
     onRequestClose: () => void;
+    order: OrderDetail;
 }
 
 type OrderProviderProps = {
@@ -16,8 +20,19 @@ export const OrderContext = createContext({} as OrderContextData)
 
 export function OrderProvider({ children }: OrderProviderProps) {
     const [isOpen, setIsOpen] = useState(false);
+    const [order, setOrder] = useState<OrderDetail>({} as OrderDetail);
 
-    function onRequestOpen() {
+    async function onRequestOpen(order_id: string) {
+        const response = await api.get("/order/detail", {
+            headers: {
+                Authorization: `Bearer ${getCookieClient()}`
+            },
+            params: {
+                order_id: order_id
+            }
+        })
+
+        setOrder(response.data);
         setIsOpen(true);
     }
 
@@ -26,7 +41,7 @@ export function OrderProvider({ children }: OrderProviderProps) {
     }
 
     return(
-        <OrderContext.Provider value={{isOpen, onRequestOpen, onRequestClose}}>
+        <OrderContext.Provider value={{isOpen, onRequestOpen, onRequestClose, order}}>
            {children} 
         </OrderContext.Provider>
     )
