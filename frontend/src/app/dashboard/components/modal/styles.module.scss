@@ -45,6 +45,7 @@
 
 .table {
     color: var(--green-900);
+    box-shadow: 0px 1px 2px ;
 }
 
 .listItems {
@@ -61,6 +62,10 @@
 
 .description {
     color: #CCC;
+}
+
+.total {
+    color: var(--green-900);
 }
 
 .containerButton {
