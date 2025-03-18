@@ -1,17 +1,20 @@
 "use client"
 
+import { use } from 'react';
 import styles from './styles.module.scss';
 import { RefreshCw } from 'lucide-react';
 import { OrderProps } from '@/lib/order.type';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 import { OrderModal } from '../modal';
+import { OrderContext } from '@/providers/order';
 
 interface Props {
     orders: OrderProps[];
 }
 
 export function Orders({ orders }: Props) {
+    const { isOpen, onRequestOpen } = use(OrderContext);
     const router = useRouter();
 
     function handleRefresh() {
@@ -43,7 +46,7 @@ export function Orders({ orders }: Props) {
                     ))}
                 </section>
 
-                <OrderModal />
+                { isOpen && <OrderModal />}
             </main>
         </>
     )
