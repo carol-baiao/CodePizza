@@ -52,7 +52,7 @@ export function OrderProvider({ children }: OrderProviderProps) {
         }
 
         try {
-            await api.put("/order/send", data, {
+            await api.put("/order/finish", data, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
